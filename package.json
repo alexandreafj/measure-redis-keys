@@ -1,0 +1,27 @@
+{
+  "name": "measure-redis-keys",
+  "version": "1.0.0",
+  "description": "Measure every key in bytes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexandreafj/measure-redis-keys.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexandreafj/measure-redis-keys/issues"
+  },
+  "homepage": "https://github.com/alexandreafj/measure-redis-keys#readme",
+  "dependencies": {
+    "object-sizeof": "^1.6.1",
+    "redis": "^3.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}

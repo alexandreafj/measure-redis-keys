@@ -1,0 +1,29 @@
+version: '3.5'
+
+services:
+  redis:
+    image: "redis:latest"
+    container_name: redis
+    ports: 
+      - 6379:6379
+  measure-redis-keys:
+    image: tracker-routes-worker
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: measure-redis-keys
+    working_dir: /measure-redis-keys
+    command: ["dumb-init", "./node_modules/.bin/nodemon", "--inspect=0.0.0.0:9229", "--legacy-watch", "--watch", ".", "--ext","js", "src/worker.js"]
+    volumes:
+      - measure-redis-keys-node-modules:/measure-redis-keys/node_modules
+      - ./:/measure-redis-keys
+    depends_on: 
+      - redis
+    environment:
+      REDIS_HOST: 
+      REDIS_PORT: 
+      KEY_PATTERN: "*"
+    links:
+      - redis:redis
+volumes:
+  measure-redis-keys-node-modules:
